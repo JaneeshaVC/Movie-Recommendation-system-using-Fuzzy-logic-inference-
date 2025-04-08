@@ -58,6 +58,7 @@ The present system included 9 rules that determined a recommendation score based
 ![image](https://github.com/user-attachments/assets/f5417be3-6f4e-4a8d-a316-287266009130)
 
 ###Debugging
+
 The problem in the original code happened because of a “division by zero error” when calculating the final recommendation score. The formula used np.trapz(R * score, score) / np.trapz(R, score), but if no fuzzy rules were triggered, the denominator (np.trapz(R, score)) becomes zero, causing the result to be NaN (Not a Number). To fix this, a condition was added; if the denominator is zero, the program will use the average score. This makes sure the program always gives a valid recommendation score instead of failing, making the fuzzy logic system more reliable.
 
 ###References 
